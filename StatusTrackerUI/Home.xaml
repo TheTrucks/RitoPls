@@ -1,0 +1,31 @@
+﻿<Page x:Class="StatusTrackerUI.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Home">
+
+    <Grid Background="#253545" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Margin="10, 10, 10, 5" Name="Logging" AcceptsReturn="True" Foreground="#CCCCCC" Background="#182838" IsReadOnly="True" SelectionBrush="#FF203040" BorderBrush="#FF051525" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" UndoLimit="1"/>
+        <Grid Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Canvas Name="Settings" Margin="1, 0, 15, 1" Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resource/Placeholder.png"></ImageBrush>
+                </Canvas.Background>
+            </Canvas>
+            <StackPanel Margin="55, 0, 10, 5">
+                <TextBlock Name="Srv" Padding="0, 12, 0, 0" Text="Server: " Foreground="#CCCCCC" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+                <TextBlock Name="Smr" Padding="0, 0, 0, 5" Text="Summoner: " Foreground="#CCCCCC" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
