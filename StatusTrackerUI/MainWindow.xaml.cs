@@ -12,24 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RitoPls.Request;
 
 namespace StatusTrackerUI
 {
     public partial class MainWindow : Window
     {
+        Page HomePage;
+        Page OptPage;
+        public event EventHandler ChangedOpts;
+        public event EventHandler UnloadHomepage;
         public MainWindow()
         {
             InitializeComponent();
             // dirty af
             TitleBorder.MouseLeftButtonDown += (object o, MouseButtonEventArgs m) => 
                 { Task.Run(() => this.Dispatcher.Invoke(Dragging)); };
-            Home HomePage = new Home(this);
+            HomePage = new Home(this);
             Pager.Navigate(HomePage);
         }
 
-        public void Test()
+        public void ShowOptions()
         {
-            MessageBox.Show("");
+            UnloadHomepage(this, new EventArgs());
+            OptPage = new Options(this);
+            Pager.Navigate(OptPage);
+        }
+
+        public void OptsSaved()
+        {
+            OptPage = null;
+            Pager.Navigate(HomePage);
+            ChangedOpts(this, new EventArgs());
         }
 
         private void Dragging()

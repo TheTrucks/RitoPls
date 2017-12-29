@@ -23,31 +23,35 @@ namespace StatusTrackerUI
         {
             InitializeComponent();
             Master = MasterWin;
+            Cancer.Click += (object o, RoutedEventArgs m) => { Master.OptsSaved(); };
+            Oki.Click += (object o, RoutedEventArgs m) =>
+                {
+                    Save();
+                    Master.OptsSaved();
+                };
+            Load();
         }
 
-        private void SaveSettings(string Server, string SumName)
+        public void Load()
         {
-            Properties.Settings.Default.SummonerName = SumName;
-            Properties.Settings.Default.Server = Server;
+            SummName.Text = Helper.SavedSumName;
+            foreach (ComboBoxItem item in ServerName.Items)
+            {
+                if (item.Content.ToString() == Helper.SavedSrvName)
+                {
+                    ServerName.SelectedItem = item;
+                    break;
+                }
+            }
+            DevKey.Text = Helper.SavedDevKey;
         }
 
-        private Server.ServerList SrvName()
+        public void Save()
         {
-            Server.ServerList Tmp = Server.ServerList.EUW;
-            string Result = null;
-            if (Properties.Settings.Default.Server != null)
-                Result = Properties.Settings.Default.Server;
-            if (Result != null)
-                Enum.TryParse(Result, out Tmp);
-            return Tmp;
-        }
-
-        private string SumName()
-        {
-            string Result = null;
-            if (Properties.Settings.Default.SummonerName != null)
-                Result = Properties.Settings.Default.SummonerName;
-            return Result;
+            Helper.SavedSumName = SummName.Text;
+            Helper.SavedSrvName = (ServerName.SelectedItem as ComboBoxItem).Content.ToString();
+            Helper.SavedDevKey = DevKey.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -8,6 +8,31 @@
 	Title="Options">
 
     <Grid Background="#253545" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        
+        <StackPanel>
+            <Label Foreground="LightGray" Margin="15, 10, 20, 0">Summoner's name</Label>
+            <TextBox Name="SummName" Foreground="White" HorizontalAlignment="Stretch" Margin="30, 0, 15, 0"></TextBox>
+            <Grid Margin="0, 25, 0, 0">
+                <Label Foreground="LightGray" HorizontalAlignment="Left" Margin="15, 0, 20, 0" Grid.Column="0">Server</Label>
+                <ComboBox Name="ServerName" HorizontalAlignment="Left" Margin="80, 0" Width="75" Height="20" Grid.Column="1">
+                    <ComboBoxItem>EUW</ComboBoxItem>
+                    <ComboBoxItem>NA</ComboBoxItem>
+                    <ComboBoxItem>KR</ComboBoxItem>
+                    <ComboBoxItem>JP</ComboBoxItem>
+                    <ComboBoxItem>BR</ComboBoxItem>
+                    <ComboBoxItem>TR</ComboBoxItem>
+                    <ComboBoxItem>OCE</ComboBoxItem>
+                    <ComboBoxItem>LAS</ComboBoxItem>
+                    <ComboBoxItem>LAN</ComboBoxItem>
+                    <ComboBoxItem>EUNE</ComboBoxItem>
+                    <ComboBoxItem>RU</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+            <Label Foreground="LightGray" Margin="15, 25, 20, 0">Developer Key [WIP]</Label>
+            <TextBox Name="DevKey" Foreground="White" HorizontalAlignment="Stretch" Margin="30, 0, 15, 10"></TextBox>
+        </StackPanel>
+        <Grid VerticalAlignment="Bottom" Margin="0, 15">
+            <Button Name="Cancer" Width="75" Height="25" HorizontalAlignment="Right" Margin="40, 0">Cancel</Button>
+            <Button Name="Oki" Width="75" Height="25" HorizontalAlignment="Left" Margin="40, 0">Save</Button>
+        </Grid>
     </Grid>
 </Page>
